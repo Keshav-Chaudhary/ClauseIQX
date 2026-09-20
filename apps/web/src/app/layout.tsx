@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 import { Outfit, Geist_Mono } from 'next/font/google';
 import { ThemeProvider } from '../components/theme/ThemeProvider';
 import { GlobalHeader } from '../components/GlobalHeader';
+import { ScrollToTop } from '../components/ScrollToTop';
 import './globals.css';
 
 const outfit = Outfit({
@@ -31,6 +32,7 @@ export default function RootLayout({
           Skip to main content
         </a>
         <ThemeProvider>
+          <ScrollToTop />
           <div className="flex flex-col min-h-screen">
             <GlobalHeader />
 

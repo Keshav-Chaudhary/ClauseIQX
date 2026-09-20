@@ -39,6 +39,39 @@ export default function WorkspacePage() {
   const [isExportOpen, setIsExportOpen] = useState(false);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
 
+  const handleTabChange = (tab: WorkspaceTab) => {
+    setActiveTab(tab);
+    if (typeof window !== 'undefined') {
+      const mainTabContent = window.document.getElementById('main-tab-content');
+      if (mainTabContent) {
+        mainTabContent.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+        mainTabContent.scrollTop = 0;
+      }
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+      if (window.document.documentElement) window.document.documentElement.scrollTop = 0;
+      if (window.document.body) window.document.body.scrollTop = 0;
+    }
+  };
+
+  // Scroll to top whenever active workspace tab changes or page mounts
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const mainTabContent = window.document.getElementById('main-tab-content');
+    if (mainTabContent) {
+      mainTabContent.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+      mainTabContent.scrollTop = 0;
+    }
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    if (window.document.documentElement) window.document.documentElement.scrollTop = 0;
+    if (window.document.body) window.document.body.scrollTop = 0;
+
+    const rafId = requestAnimationFrame(() => {
+      if (mainTabContent) mainTabContent.scrollTop = 0;
+      window.scrollTo(0, 0);
+    });
+    return () => cancelAnimationFrame(rafId);
+  }, [activeTab]);
+
   const [project, setProject] = useState({
     id: 'proj_delhi_rent_agreement',
     name: 'Delhi Residential Tenancy Agreement (11 Months)',
@@ -152,7 +185,7 @@ export default function WorkspacePage() {
       {/* Desktop Left Sidebar Navigation with Animated Hover Expand */}
       <WorkspaceSidebar
         activeTab={activeTab}
-        onTabChange={setActiveTab}
+        onTabChange={handleTabChange}
         documentName={document.filename}
         onOpenUpload={() => setIsUploadOpen(true)}
         onOpenSettings={() => setIsSettingsOpen(true)}
@@ -182,22 +215,6 @@ export default function WorkspacePage() {
           id="main-tab-content"
           className="flex-1 overflow-y-auto p-4 md:p-6 lg:p-8 custom-scrollbar pb-24 md:pb-12 space-y-6"
         >
-          {/* Contextual Legal Disclaimer Banner */}
-          <section
-            aria-label="Contextual legal disclaimer banner"
-            className="flex items-start gap-3 p-4 bg-accent-subtle border border-accent-line border-l-4 border-l-accent rounded-xl"
-          >
-            <span aria-hidden="true" className="text-xl">⚖️</span>
-            <div>
-              <h2 className="text-xs font-bold text-fg uppercase tracking-wider">
-                Legal Information Notice
-              </h2>
-              <p className="text-xs text-fg-muted mt-0.5 leading-relaxed">
-                ClauseIQX provides automated document analysis and clause extraction grounded directly in your uploaded file. This tool does not provide legal advice, representation, or outcome predictions.
-              </p>
-            </div>
-          </section>
-
           {/* Tab Panes */}
           <div className="animate-in fade-in duration-300">
             {activeTab === 'overview' && (
@@ -207,7 +224,7 @@ export default function WorkspacePage() {
                 analysis={analysis}
                 readingLevel={readingLevel}
                 onReadingLevelChange={handleReadingLevelChange}
-                onNavigateTab={(tab: string) => setActiveTab(tab as WorkspaceTab)}
+                onNavigateTab={(tab: string) => handleTabChange(tab as WorkspaceTab)}
                 onOpenUpload={() => setIsUploadOpen(true)}
                 onOpenExport={() => setIsExportOpen(true)}
               />
@@ -265,7 +282,7 @@ export default function WorkspacePage() {
       {/* Mobile Bottom Navigation */}
       <WorkspaceMobileNav
         activeTab={activeTab}
-        onTabChange={setActiveTab}
+        onTabChange={handleTabChange}
       />
 
       {/* Modals */}

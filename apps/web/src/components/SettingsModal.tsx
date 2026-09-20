@@ -368,6 +368,19 @@ export function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
               </Button>
             </div>
           </div>
+
+          {/* Legal Information Notice Footer */}
+          <div className="px-6 py-3 border-t border-[var(--border-faint)] bg-surface-3/40 flex items-start gap-2.5">
+            <span aria-hidden="true" className="text-base shrink-0">⚖️</span>
+            <div>
+              <span className="text-[10px] font-bold text-fg uppercase tracking-wider block">
+                Legal Information Notice
+              </span>
+              <p className="text-[11px] text-fg-muted mt-0.5 leading-relaxed">
+                ClauseIQX provides automated document analysis and clause extraction grounded directly in your uploaded file. This tool does not provide legal advice, representation, or outcome predictions.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
