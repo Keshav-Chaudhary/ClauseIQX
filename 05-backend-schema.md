@@ -441,3 +441,12 @@ Backups have a documented expiry policy. Deletion is idempotent (see App Flow §
 - [ ] Deletion cascade tested end-to-end (not just declared in schema)
 - [ ] Backup retention documented
 - [ ] Every `analysis_findings` row has ≥1 `finding_citations` row before it can be marked ready
+
+---
+
+## 22. Production Storage & Web Artifacts
+
+- **Web Static Deployment**: Production web application static output (`out/`) is deployed to **Firebase Hosting**.
+- **Live URL**: [https://clauseiqx.web.app](https://clauseiqx.web.app)
+- **Deployment Script**: `npm run deploy`
+

@@ -325,3 +325,13 @@ Separate development/staging/production environments. Production requires: TLS e
 ## 15. Definition of Technical Done
 
 Type checks pass; lint passes; unit/integration/E2E tests pass; security tests pass; accessibility tests pass; OpenAPI updated; migrations reversible or safely forward-compatible; logs/metrics/traces exist; error states implemented; privacy/deletion behavior tested; AI behavior has an evaluation test; no secrets or sensitive content logged.
+
+---
+
+## 16. Current Infrastructure & Deployment Target
+
+- **Web Frontend Deployment**: Static HTML/JS export via Next.js Turbopack, hosted on **Firebase Hosting**.
+- **Live Production URL**: [https://clauseiqx.web.app](https://clauseiqx.web.app)
+- **Deployment Script**: `npm run deploy`
+
+

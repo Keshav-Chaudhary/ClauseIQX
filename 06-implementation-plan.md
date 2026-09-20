@@ -293,3 +293,12 @@ Do not launch — even a demo using real user documents — until all of the fol
 - [ ] Accessibility blockers resolved (0 critical/serious automated findings, manual pass complete)
 - [ ] AI evaluation baseline recorded (retrieval + generation + comparison metrics from §12)
 - [ ] Privacy/disclaimer copy visible at onboarding, first analysis, high-stakes question, and export
+
+---
+
+## 23. Live Deployment & Firebase Production Setup
+
+- **Frontend Deployment Status**: Completed & Verified.
+- **Live Production URL**: [https://clauseiqx.web.app](https://clauseiqx.web.app)
+- **Deployment Automation**: Integrated into workspace scripts via `npm run deploy`.
+

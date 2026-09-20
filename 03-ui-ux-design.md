@@ -266,3 +266,13 @@ Every page needs: loading state, empty state, permission error, not-found, proce
 - Review-point labels never imply a legal conclusion (spot-checked in copy review).
 - All core workflows work with keyboard navigation only.
 - Screen-reader testing finds no blocking defects.
+
+---
+
+## 17. Frontend Design System & Live Deployment
+
+- **Design System Implementation**: Built using modern Vanilla CSS tokens, dark mode palette, glassmorphic UI card depth, smooth micro-animations, and responsive layouts.
+- **Production Build & Hosting**: Exported statically via Next.js Turbopack and deployed to **Firebase Hosting**.
+- **Live URL**: [https://clauseiqx.web.app](https://clauseiqx.web.app)
+- **Deployment Script**: `npm run deploy`
+

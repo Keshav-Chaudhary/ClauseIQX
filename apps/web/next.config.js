@@ -1,21 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'export',
   reactStrictMode: true,
-  agentRules: false,
-  transpilePackages: ['@clauseiqx/shared-types'],
-  async rewrites() {
-    const internalApi = process.env.INTERNAL_API_URL || 'http://127.0.0.1:4000';
-    return [
-      {
-        source: '/api/:path*',
-        destination: `${internalApi}/api/:path*`,
-      },
-      {
-        source: '/health',
-        destination: `${internalApi}/health`,
-      },
-    ];
+  images: {
+    unoptimized: true,
   },
+  transpilePackages: ['@clauseiqx/shared-types'],
 };
 
 module.exports = nextConfig;

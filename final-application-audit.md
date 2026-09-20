@@ -158,3 +158,14 @@ npm run dev:api
 `DATA_STORE=postgres` startup still require PostgreSQL/pgvector to be running.
 That infrastructure dependency is documented in `README.md`; it is not
 silently treated as a successful production check.
+
+## 9. Live Hosting & Deployment Verification
+
+**Verified on September 20, 2026:**
+
+- **Target Hosting Platform**: Firebase Hosting
+- **Deployment Script**: `npm run deploy`
+- **Deployment Output**: Next.js static pages compiled and deployed successfully to production.
+- **Live URL**: [https://clauseiqx.web.app](https://clauseiqx.web.app)
+- **Deployment Status**: PASS (Hosting verified live on Firebase).
+

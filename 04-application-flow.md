@@ -260,3 +260,22 @@ Within a project containing multiple related documents (e.g., lease + amendment 
 6. No client-side authorization decisions — server re-validates every time.
 7. No active file content (macros/scripts) is ever executed.
 8. No irreversible external action is triggered solely by model output without independent application-level authorization.
+
+---
+
+## 17. Production Deployment Flow
+
+```text
+Developer / CI
+   │
+   ▼
+npm run deploy
+   │
+   ├─ 1. Build `@clauseiqx/web` Next.js static production bundle (Turbopack)
+   ├─ 2. Target Firebase Project: `clauseiqx`
+   └─ 3. Upload & release to Firebase Hosting
+         │
+         ▼
+Live Production Site: https://clauseiqx.web.app
+```
+

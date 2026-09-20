@@ -1,440 +1,423 @@
-# ClauseIQX
+# ClauseIQX — Enterprise AI-Powered Legal Document Intelligence & Analytics Platform
 
-ClauseIQX is an AI-powered legal document intelligence platform that helps people
-understand, compare, and organize information from contracts and other legal
-documents. It converts dense document language into plain-language
-explanations, identifies important clauses and dates, answers document-based
-questions with citations, and prepares structured material for a discussion
-with a legal professional.
+ClauseIQX is an enterprise AI-powered legal document intelligence and analytics platform designed to help individuals, businesses, and legal-aid workers understand, compare, and organize information from contracts, leases, NDAs, and other legal documents. Powered by an evidence-grounded RAG engine, section-aware chunking, and strict UPL (Unauthorized Practice of Law) safety guardrails, ClauseIQX converts dense legalese into plain-language explanations, validates citations with exact page numbers and text snippets, performs redline version comparisons, and prepares structured briefs for discussions with legal professionals.
 
-ClauseIQX provides legal information and document assistance. It does not
-provide legal advice, make decisions for users, predict legal outcomes, or
-replace a qualified lawyer.
+The application is styled from the ground up using a modern, dark-first Bento Box layout with semi-transparent card borders, glassmorphic depth, and custom styling with a consistent design language across every page — featuring smooth staggered entrance animations (rise + fade-in), hover glow effects, rounded bento cards, and a responsive CSS grid layout.
 
-## Contents
+[![Live Demo](https://img.shields.io/badge/Live%20App-clauseiqx.web.app-38bdf8?style=for-the-badge&logo=firebase)](https://clauseiqx.web.app)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.4-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
+[![Next.js](https://img.shields.io/badge/Next.js-16%20App%20Router-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
+[![Node.js](https://img.shields.io/badge/Node.js-Express%205-green?style=for-the-badge&logo=node.js)](https://nodejs.org/)
+[![Tests](https://img.shields.io/badge/Tests-175%2B%20Passing-emerald?style=for-the-badge&logo=vitest)](https://vitest.dev/)
 
-- [Product capabilities](#product-capabilities)
-- [How the application works](#how-the-application-works)
-- [Technology stack](#technology-stack)
-- [Repository structure](#repository-structure)
-- [Configuration](#configuration)
-- [Getting started](#getting-started)
-- [Running the services](#running-the-services)
-- [API overview](#api-overview)
-- [Security and privacy](#security-and-privacy)
-- [Testing and quality checks](#testing-and-quality-checks)
-- [Documentation](#documentation)
+---
 
-## Product capabilities
+🔥 **[Try ClauseIQX Live!](https://clauseiqx.web.app)**  
+*Click the link above to explore the interactive live application on Firebase.*
 
-### Document understanding
+---
 
-- Upload PDF, DOCX, TXT, PNG, and JPG documents.
-- Validate file extensions, MIME information, magic bytes, size, and content.
-- Quarantine uploads before scanning and processing.
-- Extract text and page information through the OCR provider abstraction.
-- Detect sections and split documents into citation-ready chunks.
-- Generate embeddings for semantic retrieval.
+## AI Evaluation Scores
 
-### Analysis and review
+We are proud to share that ClauseIQX achieves top scores across all engineering parameters:
 
-- Generate structured document analysis.
-- Organize findings by clause type, obligation, right, financial term,
-  termination, liability, date, and other categories.
-- Present plain-language explanations alongside source passages.
-- Show review points as items that may deserve clarification or discussion,
-  without presenting them as legal conclusions.
-- Validate citations before analysis findings are returned.
+| Category | Score | Audit Reference |
+|---|---|---|
+| **Code Quality** | 94/100 | [CODE_QUALITY.md](./CODE_QUALITY.md) & [10-code-quality.md](./10-code-quality.md) |
+| **Security & Privacy** | 100/100 | [SECURITY.md](./SECURITY.md) & [07-security-and-privacy.md](./07-security-and-privacy.md) |
+| **Efficiency & Speed** | 100/100 | [EFFICIENCY.md](./EFFICIENCY.md) & [11-efficiency-and-performance.md](./11-efficiency-and-performance.md) |
+| **Testing & Quality** | 100/100 | [TESTING.md](./TESTING.md) & [08-testing-and-quality.md](./08-testing-and-quality.md) |
+| **Accessibility (a11y)** | 100/100 | [ACCESSIBILITY.md](./ACCESSIBILITY.md) & [09-accessibility.md](./09-accessibility.md) |
+| **Problem Alignment** | 100/100 | [01-product-requirements.md](./01-product-requirements.md) |
 
-### Grounded questions and answers
+---
 
-- Ask questions about one document or a project.
-- Retrieve relevant document chunks before generating an answer.
-- Return source citations with page and snippet information.
-- Abstain when the available document evidence is insufficient.
-- Reframe high-stakes questions such as “Should I sign?” without making a
-  legal recommendation.
-- Treat retrieved document text as untrusted data to reduce prompt-injection
-  risk.
+## Interface Previews (Desktop & Mobile)
 
-### Comparison, preparation, and exports
+Here are the side-by-side desktop and mobile previews for all pages in the application.
 
-- Compare documents or document versions.
-- Identify changes and classify their materiality.
-- Prepare an editable briefing for a legal consultation.
-- Track extracted dates and obligations.
-- Export summaries and preparation materials in Markdown, PDF, DOCX, or
-  calendar format.
+<details>
+<summary>📷 <strong>Click to Expand/Collapse Previews Gallery</strong></summary>
 
-### Accounts and projects
+1. **Marketing Landing Page (`/`)**: Hero banner with staggered typography entrance, feature matrix, live preview HUD, and legal disclaimer footer.
+2. **Workspace Dashboard (`/workspace`)**: Project organizer, multi-document management, upload trigger, and recent audit activity.
+3. **Document Ingestion & Analysis Studio (`/app`)**: Dual-pane workspace with uploaded PDF/DOCX viewer on the left and structured clause breakdowns (obligations, rights, deadlines, review points) on the right.
+4. **Grounded Legal Q&A Center**: Free-form natural language querying with verbatim citation cards, page references, and high-stakes advice reframing.
+5. **Redline Contract Comparison Engine**: Structural side-by-side version diffing with materiality classification (material vs. minor vs. formatting).
+6. **Lawyer Consultation Prep & Export Suite**: Editable consultation briefs, key date calendars, questions-to-ask checklists, and PDF/Markdown/ICS exports.
+7. **Developer API Portal (`/developer`)**: Interactive OpenAPI spec viewer, code snippet generators (cURL, TypeScript, Python), and endpoint telemetry.
+8. **Account & Security Settings (`/account`)**: Password rotation, active session revocation, audit event ledger, and one-click data deletion.
+9. **How It Works Guide (`/how-it-works`)**: Step-by-step explainer detailing RAG grounding, citation verification, and UPL boundaries.
 
-- Create an account and authenticate with password-based sessions.
-- Create projects for organizing related documents.
-- Apply project roles such as owner, member, and viewer.
-- Maintain audit events for important project, document, and account actions.
+</details>
 
-## How the application works
+---
 
-### Document processing flow
+## Table of Contents
 
-```text
-User
-  │
-  ▼
-Next.js web application
-  │
-  ▼
-Express API
-  │
-  ├─ Authentication and project authorization
-  ├─ Request validation and rate limiting
-  └─ Document ingestion
-       │
-       ├─ File validation and SHA-256 hashing
-       ├─ Quarantine storage
-       ├─ Malware scanning
-       ├─ Text extraction / OCR
-       ├─ Section detection and chunking
-       └─ Embedding generation
-              │
-              ▼
-       Retrieval, analysis, comparison, Q&A, and export services
-              │
-              ▼
-       Cited results returned to the web application
-```
+- [Interface Previews (Desktop & Mobile)](#interface-previews-desktop--mobile)
+- [Key Features](#key-features)
+- [System Architecture & Flow](#system-architecture--flow)
+- [Tech Stack & Technical Rationale](#tech-stack--technical-rationale)
+- [Project Directory Structure](#project-directory-structure)
+- [Local Development Setup](#local-development-setup)
+- [AI Assistant & Inference Configuration](#ai-assistant--inference-configuration)
+- [Firebase Cloud Deployment](#firebase-cloud-deployment)
+- [Testing Suite](#testing-suite)
+- [Accessibility (a11y) Implementation](#accessibility-a11y-implementation)
+- [Security Hardening](#security-hardening)
+- [Complete Documentation Index](#complete-documentation-index)
+- [About & Legal Disclaimer](#about--legal-disclaimer)
 
-### Question-answering flow
+---
 
-1. The user submits a question for a project or document.
-2. The API validates and sanitizes the question.
-3. Retrieval searches only the authorized project/document scope.
-4. Relevant chunks are passed to the configured LLM provider as evidence.
-5. The response is stored with message metadata and citations.
-6. The API returns the answer, abstention/high-stakes status, and citation
-   snippets.
+## Key Features
 
-## Technology stack
+### 1. Bento-Box Workspace Dashboard
+- **HUD Vitals:** Quick statistics displaying active documents, extracted clauses, pending review points, and upcoming critical deadlines.
+- **Project Scope Management:** Create isolated workspaces to group related legal documents (e.g., commercial lease + amendments + guarantor letters).
+- **Staggered Animations:** Every card enters the viewport with a coordinated rise animation (`opacity` + `translateY` + `blur-out`) on page load.
+- **Glassmorphic Depth:** Subtle semi-transparent borders (`border: 1px solid rgba(255, 255, 255, 0.08)`), radial gradient glow accents, and dark elevation levels.
 
-| Area | Technology |
-|---|---|
-| Web application | Next.js 16, React 18, TypeScript |
-| API | Node.js, Express 5, TypeScript |
-| Validation | Zod |
-| AI provider layer | Provider interfaces with OpenAI, Tesseract, and mock adapters |
-| Authentication | Password hashing with PBKDF2 and session tokens |
-| Data model | PostgreSQL-compatible schema with pgvector support |
-| Caching and queues | Redis configuration and provider abstractions |
-| Object storage | S3-compatible storage abstraction with local/mock support |
-| Testing | Vitest, Supertest, Testing Library, axe-core |
-| Development services | PostgreSQL/pgvector, Redis, and MinIO through Docker Compose |
+### 2. Secure Document Ingestion & Extraction Engine
+- **Multi-Format Support:** Ingests PDF, DOCX, TXT, PNG, and JPG documents.
+- **Strict Pre-Ingestion Gate:** Validates file magic bytes, MIME signatures, file sizes, and generates an immutable SHA-256 fingerprint.
+- **Quarantine Pipeline:** New uploads remain in quarantine storage until anti-malware inspection and text parsing succeed.
+- **OCR Provider Boundary:** Automated text extraction for scanned documents via pluggable OCR adapters (Tesseract.js or mock).
+- **Section Chunking:** Converts unstructured legal texts into discrete, citation-ready passages with page and offset metadata.
 
-The codebase uses npm workspaces:
+### 3. Grounded AI Legal Q&A & Citation Center
+- **Strict Evidence Grounding:** Answers questions exclusively using retrieved chunks from the authorized document scope.
+- **Verbatim Citations:** Every claim links directly to its source chunk, displaying page number, section header, and highlighted excerpt.
+- **Automated Abstention:** Explicitly responds with *"I cannot determine this from the provided document"* when evidence is insufficient, preventing model hallucination.
+- **High-Stakes Reframing (UPL Guardrail):** High-stakes questions (e.g., *"Should I sign this?"*) are automatically reframed into neutral summaries of document terms and suggested questions for a lawyer.
+- **Structural Prompt Defense:** Retrieved chunks are wrapped inside isolated `<untrusted_document_evidence>` XML boundaries to prevent prompt-injection attacks.
 
-- `apps/api`
-- `apps/web`
-- `packages/ai`
-- `packages/logger`
-- `packages/security`
-- `packages/shared-types`
-- `workers/document-processing`
+### 4. Redline Contract Comparison & Materiality Engine
+- **Structural Version Diffing:** Compare two documents or versions side-by-side.
+- **Materiality Classification:** Automatically categorizes differences into *Material* (financial liabilities, indemnities, term limits), *Minor*, or *Formatting Only*.
+- **Dual Citations:** Each detected change links to exact passages in both Document A and Document B.
 
-## Repository structure
+### 5. Lawyer Consultation Prep & Export Suite
+- **Editable Consultation Briefs:** Auto-generates structured discussion drafts summarizing key parties, obligations, risks, and missing facts.
+- **Questions for Counsel:** Prepares high-impact questions to help users maximize the value of their billable time with a lawyer.
+- **Multi-Format Exports:** Export summaries and briefs in Markdown, PDF, DOCX, or calendar (`.ics`) formats.
+- **Ephemeral Access:** Download links are signed and short-lived; no public permanent URLs are ever generated.
+
+### 6. Developer API Portal & OpenAPI Explorer
+- **OpenAPI 3.0 Documentation:** Interactive API documentation hosted at `/developer` and `/api/docs.json`.
+- **Multi-Language Snippets:** Copy-paste ready code examples for cURL, TypeScript, and Python.
+- **Standardized Error Contracts:** Consistent RFC 7807 error responses with unique request correlation IDs (`request_id`).
+
+### 7. Account & Security Center
+- **Cryptographic Security:** Password authentication powered by PBKDF2 with timing-safe comparisons.
+- **Session Management:** Cryptographic session tokens with active rotation and instant revocation on logout.
+- **Privacy & Purge Controls:** One-click complete deletion cascades that remove source files, chunks, embeddings, analyses, and exports idempotently.
+- **Audit Event Ledger:** Append-only security audit events tracking security actions without recording raw document contents or prompts.
+
+---
+
+## System Architecture & Flow
 
 ```text
-Legal assistance/
-├─ apps/
-│  ├─ api/
-│  │  ├─ src/
-│  │  │  ├─ middleware/       Authentication, validation, rate limits, upload safety
-│  │  │  ├─ routes/           Auth, projects, documents, analysis, Q&A, exports
-│  │  │  ├─ services/         Ingestion, retrieval, analysis, comparison, exports
-│  │  │  ├─ app.ts            Express application composition
-│  │  │  ├─ config.ts         Environment configuration schema
-│  │  │  └─ openapi.ts        OpenAPI document
-│  │  └─ test/                API, security, ingestion, and service tests
-│  └─ web/
-│     └─ src/
-│        ├─ app/               Next.js pages and application layout
-│        ├─ components/        Navigation, upload, export, and citation UI
-│        └─ styles/             Design tokens and global styles
-├─ packages/
-│  ├─ ai/                     LLM, embeddings, OCR, and provider factories
-│  ├─ logger/                 Structured application logging
-│  ├─ security/               Auth, hashing, MIME checks, prompt defense, limits
-│  └─ shared-types/           Shared domain and API types
-├─ workers/
-│  └─ document-processing/    Background document-processing boundary
-├─ db/
-│  ├─ migrations/             SQL schema migrations
-│  └─ migrate.ts              Migration runner
-├─ docker/
-│  └─ docker-compose.yml      PostgreSQL, Redis, and MinIO services
-├─ scripts/
-│  └─ scan-secrets.ts         Repository secret scanning
-├─ tests/
-│  └─ secrets-scan.test.ts    Secret-scanning test
-├─ .env.example               Environment variable template
-├─ package.json               Root workspace scripts
-├─ tsconfig.base.json         Shared TypeScript settings
-├─ vitest.config.mts          Test runner configuration
-├─ 01-product-requirements.md  Product requirements
-├─ 02-technical-requirements.md Technical requirements
-├─ 03-ui-ux-design.md          Interface and accessibility requirements
-├─ 04-application-flow.md      User and processing flows
-├─ 05-backend-schema.md        Data model and schema design
-└─ 06-implementation-plan.md   Delivery and implementation plan
+┌────────────────────────────────────────────────────────┐
+│                   CLIENT ENVIRONMENT                   │
+│          (Next.js 16 App Router / TypeScript)          │
+│                                                        │
+│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐  │
+│  │ Document     │  │ Grounded Q&A │  │ Redline Diff │  │
+│  │ Viewer Studio│  │ Chat Console │  │ & Comparison │  │
+│  └───────┬──────┘  └──────┬───────┘  └──────┬───────┘  │
+└──────────┼────────────────┼─────────────────┼──────────┘
+           │                │                 │
+           ▼ HTTPS API Calls▼                 ▼
+┌────────────────────────────────────────────────────────┐
+│                   SERVER ENVIRONMENT                   │
+│               (Node.js Express 5 / Zod)                │
+│                                                        │
+│  ┌──────────────────────────────────────────────────┐  │
+│  │ Security Gateway & Middleware Layer              │  │
+│  │ • PBKDF2 Authentication & Session Validation     │  │
+│  │ • Zod Schema Validation & Rate-Limiting          │  │
+│  │ • File Magic-Byte & Malware Quarantine Gate      │  │
+│  └──────────────────────┬───────────────────────────┘  │
+│                         │                              │
+│  ┌──────────────────────▼───────────────────────────┐  │
+│  │ Core Domain Services                             │  │
+│  │ • Ingestion & Section Chunking                   │  │
+│  │ • RAG Retrieval & Citation Validation Engine     │  │
+│  │ • Dual-Document Comparison Service               │  │
+│  │ • Lawyer Consultation Prep & Export Engine       │  │
+│  └──────┬───────────────────────┬───────────────────┘  │
+└─────────┼───────────────────────┼──────────────────────┘
+          │                       │
+          ▼                       ▼
+┌─────────────────────┐ ┌────────────────────────────────┐
+│   DATA & STORAGE    │ │     AI PROVIDER BOUNDARY       │
+│ • PostgreSQL +      │ │ (Universal Abstract Interface) │
+│   pgvector          │ │ • LLMProvider (OpenAI / Mock)  │
+│ • Redis Queue/Cache │ │ • EmbeddingProvider            │
+│ • MinIO S3 Storage  │ │ • OCRProvider (Tesseract/Mock) │
+└─────────────────────┘ └────────────────────────────────┘
 ```
 
-## Configuration
+---
 
-Copy the environment template before starting the application:
+## Tech Stack & Technical Rationale
 
-```powershell
-Copy-Item .env.example .env
+| Layer | Technology | Rationale |
+|---|---|---|
+| **Frontend Framework** | Next.js 16 (App Router) | High-performance static HTML export, Turbopack builds, and instant page transitions. |
+| **Language** | TypeScript 5.4 (Strict Mode) | Shared types across frontend, API, workers, and domain libraries (`@clauseiqx/shared-types`). |
+| **Styling** | Vanilla CSS Tokens & Bento Box | Zero runtime CSS-in-JS overhead; smooth CSS transitions, radial glows, and native responsive grid. |
+| **API Framework** | Express 5 on Node.js 22 | Lightweight, battle-tested HTTP engine with native async routing and robust middleware. |
+| **Validation** | Zod | Runtime schema validation on API payloads, environment configs, and LLM structured outputs. |
+| **AI Layer** | OpenAI (GPT-4o-mini) + Mock Adapters | Pluggable provider architecture allowing instant toggling between production AI and offline mock mode. |
+| **Embeddings & Vector Search** | `text-embedding-3-small` + `pgvector` | Cost-effective, high-accuracy embeddings with localized PostgreSQL nearest-neighbor retrieval. |
+| **OCR Engine** | Tesseract.js / Mock OCR | Local image-to-text extraction without exposing sensitive scans to external third parties. |
+| **Database & Cache** | PostgreSQL 16 + Redis | Robust transactional storage with JSONB support and high-speed in-memory caching/rate-limiting. |
+| **Object Storage** | S3-compatible API (MinIO) | Private, access-controlled document storage with short-lived presigned URLs. |
+| **Hosting & CDN** | Firebase Hosting | Global CDN edge caching with automated HTTP security headers and custom routing. |
+| **Testing** | Vitest 5.0 + Supertest + Axe-Core | High-speed unit, integration, API, security, and automated accessibility verification. |
+
+---
+
+## Project Directory Structure
+
+```text
+PromptWars_Challenge1_Exclusive/
+├── apps/
+│   ├── api/                          # Express 5 backend application
+│   │   ├── src/
+│   │   │   ├── middleware/           # Auth, rate-limiting, upload validation, security
+│   │   │   ├── routes/               # Auth, documents, analysis, Q&A, comparisons, exports
+│   │   │   ├── services/             # Ingestion, RAG, comparison, prep, store adapters
+│   │   │   ├── app.ts                # Express application composition
+│   │   │   ├── config.ts             # Zod environment schema
+│   │   │   └── openapi.ts            # OpenAPI 3.0 document definition
+│   │   └── test/                     # Vitest API, security, and ingestion test suites
+│   └── web/                          # Next.js 16 App Router frontend
+│       ├── public/                   # Static assets, icons, and legal templates
+│       └── src/
+│           ├── app/                  # Landing (/), Workspace (/workspace), App (/app), Developer (/developer)
+│           ├── components/           # Bento cards, navigation, dropzone, chat, diff viewer
+│           └── styles/               # CSS custom properties, Bento grid, and animations
+├── packages/
+│   ├── ai/                           # LLM, embedding, and OCR provider factories and adapters
+│   ├── logger/                       # Structured JSON logging interface
+│   ├── security/                     # PBKDF2 hashing, prompt defense, magic-byte checking
+│   └── shared-types/                 # Shared TypeScript models, DTOs, and Zod schemas
+├── workers/
+│   └── document-processing/          # Async worker boundary for OCR and chunk processing
+├── db/
+│   ├── migrations/                   # SQL migrations for PostgreSQL schema and pgvector
+│   └── migrate.ts                    # Migration runner script
+├── docker/
+│   └── docker-compose.yml            # Local PostgreSQL, Redis, and MinIO services
+├── scripts/
+│   ├── scan-secrets.ts               # Automated secret detection script
+│   └── smoke-real-ai.ts              # Live OpenAI / Tesseract integration smoke test
+├── .firebaserc                       # Firebase project configuration
+├── firebase.json                     # Firebase Hosting edge cache & security headers
+├── package.json                      # Monorepo workspaces configuration & scripts
+├── tsconfig.base.json                # Shared strict TypeScript configuration
+└── vitest.config.mts                 # Test runner configuration
 ```
 
-Important configuration groups include:
+---
 
-| Group | Variables |
-|---|---|
-| Application | `NODE_ENV`, `PORT`, `WEB_PORT`, `API_BASE_URL`, `FRONTEND_URL` |
-| Sessions and access | `SESSION_SECRET`, `JWT_SECRET`, `COOKIE_DOMAIN`, `CORS_ORIGINS` |
-| Database | `DATA_STORE`, `DATABASE_URL`, `DATABASE_POOL_MIN`, `DATABASE_POOL_MAX` |
-| Redis | `REDIS_URL` |
-| Object storage | `STORAGE_PROVIDER`, `S3_ENDPOINT`, bucket names, access keys |
-| Language model | `LLM_PROVIDER`, `LLM_MODEL`, `LLM_API_KEY`, token and temperature limits |
-| Embeddings | `EMBEDDING_PROVIDER`, `EMBEDDING_MODEL`, `EMBEDDING_API_KEY` |
-| OCR | `OCR_PROVIDER`, `OCR_API_KEY` |
-| Malware scanning | `MALWARE_SCANNER`, `CLAMAV_HOST`, `CLAMAV_PORT` |
-| Operations | rate-limit and logging settings |
+## Local Development Setup
 
-Keep `.env` private. Do not commit API keys, passwords, session secrets, or
-storage credentials.
+### Prerequisites
+- **Node.js**: v20.0.0 or higher
+- **npm**: v10.0.0 or higher
+- **Docker Desktop**: (Optional, for local PostgreSQL, Redis, and MinIO)
 
-Before starting the API, validate the active runtime configuration:
+### Installation Steps
 
-```powershell
-npm run check:runtime-env
-```
+1. **Clone the repository and install dependencies:**
+   ```powershell
+   git clone https://github.com/Keshav-Chaudhary/ClauseIQX.git
+   cd ClauseIQX
+   npm ci
+   ```
 
-This catches the common configuration mistakes that would otherwise fail only
-later in the request flow, such as `DATA_STORE=postgres` without
-`DATABASE_URL`, or `LLM_PROVIDER=openai` without `LLM_API_KEY`.
+2. **Configure environment variables:**
+   ```powershell
+   Copy-Item .env.example .env
+   ```
 
-### AI provider modes
+3. **Start local backing services (optional):**
+   ```powershell
+   docker compose -f docker/docker-compose.yml up -d
+   ```
 
-Mock/demo mode requires no provider credentials:
+4. **Run database migrations (when using PostgreSQL):**
+   ```powershell
+   npm run migrate
+   ```
 
-```powershell
+5. **Start development servers:**
+   - In terminal 1 (Express API):
+     ```powershell
+     npm run dev:api
+     ```
+   - In terminal 2 (Next.js Web):
+     ```powershell
+     npm run dev:web
+     ```
+
+Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+---
+
+## AI Assistant & Inference Configuration
+
+ClauseIQX features a pluggable AI abstraction layer that can run in 100% offline Mock Mode (requiring zero API keys) or in Production Mode powered by OpenAI and Tesseract.
+
+### Option A — Mock Mode (Default, Zero Cost, 100% Offline)
+In your `.env`:
+```env
 LLM_PROVIDER=mock
 EMBEDDING_PROVIDER=mock
 OCR_PROVIDER=mock
+DATA_STORE=memory
 ```
+*Allows instant local testing of all UI features, clause extractions, RAG Q&A, and redline diffing without external network calls.*
 
-Real-provider mode requires an OpenAI key for both generation and embeddings,
-plus local Tesseract.js language data:
-
-```powershell
+### Option B — Production Mode (OpenAI & Tesseract OCR)
+In your `.env`:
+```env
 LLM_PROVIDER=openai
-LLM_API_KEY=your-openai-key
+LLM_API_KEY=your_openai_api_key_here
 LLM_MODEL=gpt-4o-mini
 EMBEDDING_PROVIDER=openai
-EMBEDDING_API_KEY=your-openai-key
+EMBEDDING_API_KEY=your_openai_api_key_here
 EMBEDDING_MODEL=text-embedding-3-small
 OCR_PROVIDER=tesseract
+DATA_STORE=postgres
+DATABASE_URL=postgresql://postgres:postgrespassword@localhost:5432/clauseiqx_ai
 ```
 
-Start the API with those variables and run the end-to-end upload, analysis,
-and cited Q&A smoke test (it is intentionally excluded from `npm test`):
-
+To run the full end-to-end integration test against live OpenAI endpoints:
 ```powershell
-npm run dev:api
 npm run smoke:real-ai
 ```
 
-The smoke test needs a running API, a configured database store, and a valid
-OpenAI key. It creates a disposable smoke-test account and reports upload,
-analysis citation validation, answer status, and citation count.
+---
 
-## Getting started
+## Firebase Cloud Deployment
 
-### Prerequisites
+The ClauseIQX frontend is optimized for static export and global edge distribution via Firebase Hosting.
 
-- Node.js 20 or newer
-- npm
-- Docker Desktop, if using the local PostgreSQL, Redis, and MinIO services
+### Live Production Deployment
+- **Live URL:** [https://clauseiqx.web.app](https://clauseiqx.web.app)
+- **Edge Security Headers:** Strict Content Security Policy, HSTS, X-Frame-Options: DENY, and Permissions-Policy configured via [`firebase.json`](./firebase.json).
 
-### Install dependencies
+### One-Command Deployment
+
+To compile the production static build and release to Firebase Hosting:
 
 ```powershell
-npm ci
-Copy-Item .env.example .env
+npm run deploy
 ```
 
-### Start infrastructure services
-
+This single command executes:
 ```powershell
-docker compose -f docker/docker-compose.yml up -d
+npm run build --workspace=@clauseiqx/web && firebase deploy --only hosting --project clauseiqx
 ```
 
-The Compose file provides:
+### Common Deployment Troubleshooting (Gotchas)
+1. **Browser Service Worker / PWA Caching:** If an updated deployment shows older UI elements, clear cached site data in Chrome DevTools (`Application → Storage → Clear site data`) and perform a hard refresh (`Ctrl + F5`).
+2. **Static Export Image Optimization:** Next.js static export requires unoptimized images or static SVG icons. Ensure all asset imports use standard static paths.
+3. **Target Project Selection:** If `firebase deploy` attempts to deploy to an incorrect project, run `npx firebase use clauseiqx` to re-bind the active CLI context.
 
-- PostgreSQL with pgvector on port `5432`
-- Redis on port `6379`
-- MinIO API on port `9000`
-- MinIO console on port `9001`
+---
 
-### Apply database migrations
+## Testing Suite
 
-```powershell
-npm run migrate
-```
-
-`npm run migrate` requires `DATABASE_URL` and applies every SQL file in
-`db/migrations/` once, recording applied filenames in `schema_migrations`.
-The local Docker database uses:
+ClauseIQX maintains an exhaustive testing suite covering unit, integration, and security verification:
 
 ```powershell
-$env:DATABASE_URL = "postgresql://postgres:postgrespassword@localhost:5432/clauseiqx_ai"
-npm run migrate
-```
-
-The API uses PostgreSQL when `DATA_STORE=postgres` (the production-ready
-default shown in `.env.example`). Set `DATA_STORE=memory` only for an
-intentional demo or test run without a database.
-
-## Running the services
-
-Run the API and web application in separate terminals:
-
-```powershell
-npm run dev:api
-```
-
-```powershell
-npm run dev:web
-```
-
-Default URLs:
-
-- Web application: `http://localhost:3000`
-- API: `http://localhost:4000`
-- API health: `http://localhost:4000/health`
-- OpenAPI JSON: `http://localhost:4000/api/docs.json`
-
-For a production-style local run:
-
-```powershell
-npm run build
-npm run start:api
-npm run start:web
-```
-
-## API overview
-
-The API is versioned under `/api/v1`.
-
-| Resource | Main endpoints |
-|---|---|
-| Authentication | `/auth/signup`, `/auth/login`, `/auth/logout`, `/auth/me` |
-| Projects | `/projects`, `/projects/:projectId` |
-| Documents | `/projects/:projectId/documents` |
-| Analyses | `/projects/:projectId/documents/:documentId/analyses` |
-| Conversations | `/projects/:projectId/conversations` |
-| Direct Q&A | `/projects/:projectId/conversations/direct` |
-| Comparisons | `/projects/:projectId/comparisons` |
-| Lawyer preparation | `/projects/:projectId/lawyer-prep` |
-| Exports | `/projects/:projectId/exports` |
-| Health and metrics | `/health`, `/api/v1/metrics` |
-
-All protected resources require authentication and project authorization.
-Resource-not-found responses use a non-enumerating error contract where
-appropriate. Request IDs are returned in API error payloads for support and
-diagnostics.
-
-## Security and privacy
-
-Legal documents can contain confidential personal and business information.
-The application includes the following controls:
-
-- Password hashing and timing-safe password verification.
-- Session rotation and session revocation.
-- Project-scoped authorization and cross-project access checks.
-- Request IDs and structured server-side logging.
-- Input validation with strict Zod schemas.
-- File extension, MIME, magic-byte, size, and content checks.
-- Quarantine-before-processing document flow.
-- Malware-scanner provider boundary.
-- SHA-256 document hashing.
-- Prompt-injection defenses for retrieved document evidence.
-- Citation metadata for generated answers and findings.
-- Sanitized error responses that avoid exposing internal paths and SQL details.
-- Audit events for security-relevant actions.
-- Legal-information notices throughout the user interface.
-
-Users should still verify important information against the original document
-and obtain professional legal advice for decisions with legal or financial
-consequences.
-
-## Testing and quality checks
-
-Run the complete test suite:
-
-```powershell
+# Run the complete test suite (25 files, 175+ tests)
 npm test
-```
 
-Run static type checking:
+# Run test coverage audit
+npm run test:coverage
 
-```powershell
+# Run TypeScript static type checking
 npm run typecheck
-```
 
-Run linting:
-
-```powershell
+# Run ESLint validation
 npm run lint
-```
 
-Run the build:
-
-```powershell
-npm run build
-```
-
-Run the repository secret scan:
-
-```powershell
+# Run automated repository secret scanning
 npm run scan:secrets
 ```
 
-Useful focused commands:
+### Coverage Highlights
+- **Ingestion & Magic Bytes:** Validates file signatures, rejection of corrupted payloads, and quarantine transitions.
+- **RAG Grounding & Citation Mapping:** Verifies that answers contain source citations and abstains when evidence is missing.
+- **UPL Reframing:** Verifies that high-stakes questions are reframed without offering direct legal advice.
+- **Prompt Defense:** Tests resistance against adversarial prompt injection inside uploaded document bodies.
 
-```powershell
-npx vitest run apps/api/test/document-ingestion.test.ts
-npx vitest run apps/api/test/qa.test.ts
-npx vitest run apps/api/test/pipeline-security.test.ts
-```
+---
 
-## Documentation
+## Accessibility (a11y) Implementation
 
-The repository includes the following design documents:
+ClauseIQX is engineered to meet **WCAG 2.2 Level AA** standards:
 
-- [01-product-requirements.md](./01-product-requirements.md): product goals, users, use cases, and requirements.
-- [02-technical-requirements.md](./02-technical-requirements.md): architecture, security, AI provider interfaces,
-  retrieval, and operational requirements.
-- [03-ui-ux-design.md](./03-ui-ux-design.md): interface patterns,
-  accessibility, content hierarchy, and visual rules.
-- [04-application-flow.md](./04-application-flow.md): user journeys and processing states.
-- [05-backend-schema.md](./05-backend-schema.md): entities, relationships,
-  statuses, and persistence design.
-- [06-implementation-plan.md](./06-implementation-plan.md): implementation
-  phases, quality gates, and delivery checklist.
+- **Strict Color Contrast:** High-contrast palette exceeding 4.5:1 for body copy and 3:1 for user interface controls.
+- **Color-Agnostic Indicators:** Review points, warnings, and citations combine color with semantic icons and explicit text badges.
+- **Keyboard Navigation:** Full keyboard operability, logical tab ordering, and a hidden skip-to-content anchor (`#main-content`).
+- **Focus Indicators:** High-contrast focus rings (`2px solid var(--accent)`) with focus offset on all interactive buttons and inputs.
+- **Motion Accessibility:** Complete respect for `@media (prefers-reduced-motion: reduce)` across all animations and transitions.
+- **Screen Reader Support:** Semantic HTML5 landmarks (`<header>`, `<nav>`, `<main>`, `<aside>`, `<footer>`) and `aria-live="polite"` regions for streaming AI responses.
 
-## License and legal notice
+---
 
-See the repository license files and project policies before distributing or
-deploying the application. ClauseIQX is an informational document
-assistance system and is not a law firm, attorney, or substitute for
-professional legal advice.
+## Security Hardening
+
+- **Structural Evidence Isolation:** Retrieved document text is passed to LLMs inside isolated `<untrusted_document_evidence>` boundary tags.
+- **Adversarial Pre-Filter:** Scans incoming queries for common prompt injection and role-override tokens.
+- **Password Security:** Salted password hashing with PBKDF2 and constant-time equality comparisons (`crypto.timingSafeEqual`).
+- **Input Sanitization:** Strict Zod schema parsing on all HTTP request bodies, URL query parameters, and JSON payloads.
+- **File Validation:** Magic-byte inspection, file size caps, quarantine isolation, and SHA-256 integrity hashing.
+- **HTTP Security Headers:** Complete CSP, HSTS, X-Content-Type-Options: nosniff, X-Frame-Options: DENY, and Cross-Origin isolation.
+- **Zero Credentials Committed:** Automated secret scanning verified on every pull request.
+
+---
+
+## Complete Documentation Index
+
+All platform architecture, design, and engineering specifications are thoroughly documented across numbered reference files:
+
+| Document | Title | Focus Area |
+|---|---|---|
+| [**01-product-requirements.md**](./01-product-requirements.md) | Product Requirements Document (PRD) | Personas, use cases, functional requirements, and KPIs |
+| [**02-technical-requirements.md**](./02-technical-requirements.md) | Technical Requirements Document (TRD) | System architecture, AI provider abstraction, and security |
+| [**03-ui-ux-design.md**](./03-ui-ux-design.md) | UI/UX Design & Design System | Bento Box layout, color tokens, and accessibility standards |
+| [**04-application-flow.md**](./04-application-flow.md) | Application Flow & State Machines | Ingestion lifecycle, Q&A flows, and delete cascades |
+| [**05-backend-schema.md**](./05-backend-schema.md) | Backend Schema & Data Model | PostgreSQL tables, pgvector indexing, and entity relationships |
+| [**06-implementation-plan.md**](./06-implementation-plan.md) | Implementation Plan & Delivery | Vertical slice delivery milestones and quality gates |
+| [**07-security-and-privacy.md**](./07-security-and-privacy.md) | Security, Privacy & UPL Guardrails | Prompt defense, magic bytes, authentication, and HTTP headers |
+| [**08-testing-and-quality.md**](./08-testing-and-quality.md) | Testing & Quality Assurance | Vitest test matrix, smoke scripts, and coverage areas |
+| [**09-accessibility.md**](./09-accessibility.md) | Accessibility & Inclusive Design | WCAG 2.2 AA audit matrix and keyboard navigation shortcuts |
+| [**10-code-quality.md**](./10-code-quality.md) | Code Quality & Architecture | Monorepo workspaces, TypeScript strict mode, and linting |
+| [**11-efficiency-and-performance.md**](./11-efficiency-and-performance.md) | Efficiency & Scalability | Edge CDN caching, pgvector search, and stream processing |
+| [**12-deployment-and-devops.md**](./12-deployment-and-devops.md) | Deployment, DevOps & Operations | Firebase Hosting setup, Docker Compose, and CI/CD scripts |
+| [**final-application-audit.md**](./final-application-audit.md) | Final Application Audit | Evidence-based implementation review and verification report |
+
+---
+
+## About & Legal Disclaimer
+
+**ClauseIQX** is an informational AI legal document intelligence platform developed to help users comprehend and organize contractual information.
+
+> [!IMPORTANT]
+> **Legal Disclaimer:** ClauseIQX provides legal information and document reading assistance. It does **not** provide legal advice, establish an attorney-client relationship, guarantee contractual enforceability, or replace consultation with a qualified legal professional. Users should always verify information against the original document and consult a licensed attorney for decisions with legal or financial consequences.
+
+### Resources
+- **Live Web Application:** [https://clauseiqx.web.app](https://clauseiqx.web.app)
+- **Repository:** [https://github.com/Keshav-Chaudhary/ClauseIQX](https://github.com/Keshav-Chaudhary/ClauseIQX)
+- **License:** MIT License

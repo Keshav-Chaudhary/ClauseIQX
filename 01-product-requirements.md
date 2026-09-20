@@ -215,3 +215,13 @@ Priority: **M**=Must (v1), **S**=Should (v1.x), **C**=Could (future)
 - **Groundedness:** how directly an AI answer is supported by cited source material.
 - **Abstention:** the system explicitly declining to answer when evidence is insufficient, rather than guessing.
 - **Review Point:** a flagged clause worth a second look — explicitly not a legal risk verdict.
+
+---
+
+## 13. Deployment & Production Status
+
+- **Hosting Platform**: Firebase Hosting
+- **Live Production URL**: [https://clauseiqx.web.app](https://clauseiqx.web.app)
+- **Deployment Script**: `npm run deploy`
+
+

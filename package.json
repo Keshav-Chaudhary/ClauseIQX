@@ -19,6 +19,7 @@
     "start:web": "npm run start --workspace=@clauseiqx/web",
     "dev:api": "npm run dev --workspace=@clauseiqx/api",
     "dev:web": "npm run dev --workspace=@clauseiqx/web",
+    "deploy": "npm run build --workspace=@clauseiqx/web && firebase deploy --only hosting --project clauseiqx",
     "smoke:real-ai": "ts-node scripts/smoke-real-ai.ts"
   },
   "devDependencies": {
