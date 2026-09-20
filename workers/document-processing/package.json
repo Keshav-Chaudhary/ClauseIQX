@@ -1,0 +1,19 @@
+{
+  "name": "@clauseiqx/document-processing-worker",
+  "version": "1.0.0",
+  "private": true,
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@clauseiqx/ai": "*",
+    "@clauseiqx/logger": "*",
+    "@clauseiqx/security": "*",
+    "@clauseiqx/shared-types": "*"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.5"
+  }
+}

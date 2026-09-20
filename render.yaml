@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: clauseiqx
+    env: node
+    plan: free
+    buildCommand: npm run build
+    startCommand: npm run start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATA_STORE
+        value: memory
+      - key: LLM_PROVIDER
+        value: mock
+      - key: EMBEDDING_PROVIDER
+        value: mock
+      - key: OCR_PROVIDER
+        value: mock
+      - key: MALWARE_SCANNER
+        value: mock
+      - key: STORAGE_PROVIDER
+        value: mock

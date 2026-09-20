@@ -1,0 +1,19 @@
+{
+  "name": "@clauseiqx/security",
+  "version": "1.0.0",
+  "private": true,
+  "main": "dist/index.js",
+  "//": "must point at source, not dist — CI typechecks before building",
+  "types": "src/index.ts",
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@clauseiqx/shared-types": "*",
+    "ioredis": "^6.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.5"
+  }
+}

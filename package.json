@@ -1,0 +1,57 @@
+{
+  "name": "clauseiqx-ai",
+  "version": "1.0.0",
+  "private": true,
+  "description": "ClauseIQX — Enterprise AI-powered legal document intelligence platform",
+  "workspaces": [
+    "packages/*",
+    "apps/*",
+    "workers/*"
+  ],
+  "scripts": {
+    "build": "npm run build --workspaces --if-present",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "lint": "npm run lint --workspaces --if-present",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "start": "node scripts/start-service.js",
+    "start:api": "npm run start --workspace=@clauseiqx/api",
+    "start:web": "npm run start --workspace=@clauseiqx/web",
+    "dev:api": "npm run dev --workspace=@clauseiqx/api",
+    "dev:web": "npm run dev --workspace=@clauseiqx/web",
+    "smoke:real-ai": "ts-node scripts/smoke-real-ai.ts"
+  },
+  "devDependencies": {
+    "@axe-core/react": "^4.9.1",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.1.0",
+    "@testing-library/user-event": "^14.5.2",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.0.0",
+    "@types/pg": "^8.23.1",
+    "@types/supertest": "^6.0.2",
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "@vitest/coverage-v8": "^5.0.0",
+    "axe-core": "^4.10.2",
+    "cors": "^2.8.5",
+    "eslint": "^8.57.0",
+    "express": "^5.0.0",
+    "jsdom": "^25.0.1",
+    "playwright": "^1.63.0",
+    "supertest": "^7.0.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5",
+    "vitest": "^5.0.0"
+  },
+  "overrides": {
+    "qs": "6.16.0",
+    "express": {
+      "qs": "6.16.0"
+    }
+  },
+  "dependencies": {
+    "pg": "^8.23.0"
+  }
+}

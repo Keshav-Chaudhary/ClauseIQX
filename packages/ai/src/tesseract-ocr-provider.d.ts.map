@@ -1,0 +1,1 @@
+{"version":3,"file":"tesseract-ocr-provider.d.ts","sourceRoot":"","sources":["tesseract-ocr-provider.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,WAAW,EAAE,gBAAgB,EAAiB,MAAM,cAAc,CAAC;AAE5E;;;;;GAKG;AACH,qBAAa,oBAAqB,YAAW,WAAW;IAChD,OAAO,CAAC,UAAU,EAAE,MAAM,EAAE,SAAS,EAAE,MAAM,GAAG,OAAO,CAAC,gBAAgB,CAAC;IAgC/E,eAAe,IAAI,MAAM;CAG1B"}

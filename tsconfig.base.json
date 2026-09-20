@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "lib": ["ES2022", "DOM"],
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "jsx": "react-jsx",
+    "baseUrl": ".",
+    "paths": {
+      "@clauseiqx/ai": ["packages/ai/dist/index.d.ts", "packages/ai/src/index.ts"],
+      "@clauseiqx/logger": ["packages/logger/dist/index.d.ts", "packages/logger/src/index.ts"],
+      "@clauseiqx/security": ["packages/security/dist/index.d.ts", "packages/security/src/index.ts"],
+      "@clauseiqx/shared-types": ["packages/shared-types/dist/index.d.ts", "packages/shared-types/src/index.ts"]
+    }
+  }
+}

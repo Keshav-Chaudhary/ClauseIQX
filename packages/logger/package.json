@@ -1,0 +1,15 @@
+{
+  "name": "@clauseiqx/logger",
+  "version": "1.0.0",
+  "private": true,
+  "main": "dist/index.js",
+  "//": "must point at source, not dist — CI typechecks before building",
+  "types": "src/index.ts",
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.5"
+  }
+}

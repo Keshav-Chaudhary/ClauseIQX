@@ -1,0 +1,1 @@
+{"version":3,"file":"rate-limiter-factory.js","sourceRoot":"","sources":["rate-limiter-factory.ts"],"names":[],"mappings":";;AAOA,8CAKC;AAZD,iDAA2E;AAC3E,6DAAwD;AAExD;;;GAGG;AACH,SAAgB,iBAAiB,CAAC,QAAiB;IACjD,IAAI,QAAQ,EAAE,CAAC;QACb,OAAO,IAAI,qCAAgB,CAAC,QAAQ,CAAC,CAAC;IACxC,CAAC;IACD,OAAO,IAAI,kCAAmB,EAAE,CAAC;AACnC,CAAC"}
