@@ -4,7 +4,7 @@ import { cn } from "@/utils/cn";
 import { SelectOption } from "../Select";
 
 interface SelectTriggerProps {
-  buttonRef: RefObject<HTMLButtonElement | null>;
+  buttonRef: RefObject<HTMLButtonElement>;
   baseId: string;
   open: boolean;
   listboxId: string;
@@ -32,7 +32,7 @@ export function SelectTrigger({
 }: SelectTriggerProps) {
   return (
     <button
-      ref={buttonRef as any}
+      ref={buttonRef}
       type="button"
       id={baseId}
       aria-haspopup="listbox"

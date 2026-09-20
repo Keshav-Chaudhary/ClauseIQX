@@ -115,7 +115,7 @@ export async function generateDocumentAnalysis(params: {
           explanation:
             readingLevel === 'simple'
               ? 'Plain summary: Monthly rent of ₹45,000 is due on or before the 5th of each calendar month. A late fine of ₹250/day applies if delayed.'
-              : `Statutory Provision: Tenant covenants to pay monthly rental consideration of INR 45,000/- in advance by the 5th of each English calendar month: ${chunk.text_content.substring(0, 150)}...`,
+              : `Detailed legal provision: Tenant covenants to pay monthly rental consideration of INR 45,000/- in advance by the 5th of each English calendar month: ${chunk.text_content.substring(0, 150)}...`,
           confidence: 'high',
           chunk_ids: [chunk.id],
         });
@@ -128,7 +128,7 @@ export async function generateDocumentAnalysis(params: {
           explanation:
             readingLevel === 'simple'
               ? 'Plain summary: After the 6-month lock-in period, either landlord or tenant can terminate this rent agreement by giving 1 month (30 days) written notice.'
-              : `Statutory Provision: Tenancy termination covenants requiring 30 days prior written notice following completion of the mandatory 6-month lock-in tenure: ${chunk.text_content.substring(0, 150)}...`,
+              : `Detailed legal provision: Tenancy termination covenants requiring 30 days prior written notice following completion of the mandatory 6-month lock-in tenure: ${chunk.text_content.substring(0, 150)}...`,
           confidence: 'high',
           chunk_ids: [chunk.id],
         });
@@ -141,7 +141,7 @@ export async function generateDocumentAnalysis(params: {
           explanation:
             readingLevel === 'simple'
               ? 'Plain summary: This tenancy agreement is governed by Indian law and subject to the exclusive jurisdiction of Civil Courts in New Delhi, India.'
-              : `Statutory Provision: Governed by the Transfer of Property Act, 1882 and Indian Contract Act, 1872, with exclusive territorial jurisdiction in New Delhi, India: ${chunk.text_content.substring(0, 150)}...`,
+              : `Detailed legal provision: Governed by the Transfer of Property Act, 1882 and Indian Contract Act, 1872, with exclusive territorial jurisdiction in New Delhi, India: ${chunk.text_content.substring(0, 150)}...`,
           confidence: 'high',
           chunk_ids: [chunk.id],
         });
@@ -165,7 +165,7 @@ export async function generateDocumentAnalysis(params: {
           explanation:
             readingLevel === 'simple'
               ? 'Plain summary: If you vacate before completing 6 months, the landlord can forfeit your entire ₹90,000 security deposit. Normal repainting wear-and-tear is also not protected.'
-              : `Statutory Provision: Critical risk identified in security deposit forfeiture and lock-in covenants, creating open-ended financial loss for early vacation without fair wear-and-tear exclusions: ${chunk.text_content.substring(0, 150)}...`,
+              : `Detailed legal provision: Critical risk identified in security deposit forfeiture and lock-in covenants, creating open-ended financial loss for early vacation without fair wear-and-tear exclusions: ${chunk.text_content.substring(0, 150)}...`,
           confidence: 'high',
           chunk_ids: [chunk.id],
         });

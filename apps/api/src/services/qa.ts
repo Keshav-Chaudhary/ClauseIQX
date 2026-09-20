@@ -30,7 +30,7 @@ export interface AskQuestionResult {
 /**
  * High-stakes query detector per 04_App_Flow.md §12 and 01_PRD.md §7.
  */
-function isHighStakesQuery(query: string): boolean {
+export function isHighStakesQuery(query: string): boolean {
   const q = query.toLowerCase();
   return (
     q.includes('will i win') ||
@@ -39,7 +39,8 @@ function isHighStakesQuery(query: string): boolean {
     q.includes('is this illegal') ||
     q.includes('can i sue') ||
     q.includes('guarantee') ||
-    q.includes('do i have a case')
+    q.includes('do i have a case') ||
+    /\bis\s+this\b.*\b(legal|illegal|enforceable)\b/i.test(q)
   );
 }
 

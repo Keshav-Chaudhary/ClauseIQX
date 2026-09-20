@@ -26,8 +26,8 @@ interface SelectProps {
 }
 
 interface SelectMenuRefs {
-  buttonRef: React.RefObject<HTMLButtonElement | null>;
-  listRef: React.RefObject<HTMLUListElement | null>;
+  buttonRef: React.RefObject<HTMLButtonElement>;
+  listRef: React.RefObject<HTMLUListElement>;
 }
 
 /** Closes the dropdown when a pointer event occurs outside the button or list. */
@@ -58,14 +58,15 @@ function useScrollActiveOption(
 ): void {
   useEffect(() => {
     if (!open) return;
-    document.getElementById(optionId(activeIndex))?.scrollIntoView({ block: "nearest" });
-  }, [activeIndex, open, optionId]);
+    const el = document.getElementById(optionId(activeIndex));
+    el?.scrollIntoView({ block: "nearest" });
+  }, [open, activeIndex, optionId]);
 }
 
 /** Moves focus into the listbox when it opens. */
 function useListFocusOnOpen(
   open: boolean,
-  listRef: React.RefObject<HTMLUListElement | null>,
+  listRef: React.RefObject<HTMLUListElement>,
 ): void {
   useEffect(() => {
     if (open) listRef.current?.focus();

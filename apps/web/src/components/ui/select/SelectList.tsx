@@ -6,7 +6,7 @@ import { SelectOption } from "./SelectOption";
 interface SelectListProps {
   options: SelectOptionType[];
   value: string;
-  listRef: RefObject<HTMLUListElement | null>;
+  listRef: RefObject<HTMLUListElement>;
   listboxId: string;
   activeIndex: number;
   optionId: (i: number) => string;
@@ -30,7 +30,7 @@ export function SelectList({
 }: SelectListProps) {
   return (
     <ul
-      ref={listRef as any}
+      ref={listRef}
       id={listboxId}
       role="listbox"
       tabIndex={-1}
